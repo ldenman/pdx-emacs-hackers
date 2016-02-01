@@ -1,0 +1,24 @@
+* agenda                                                               :lake:
+** basic intro
+** reporting view
+** deadlines
+** agenda as navigtation
+** changing states of items
+** adding files to agenda
+* time tracking                                                        :will:
+** deadlines
+** schedule
+*** recurring schedules
+*** one time schedules
+** clock
+** property lists                                                      :will:
+*** brief basic intro
+*** drawers
+*** mention all things that are stored in plists
+* archiving/refiling
+* extensions
+** org-pomodoro
+** org-habit
+** org-dayspages
+** org-alert
+** org-blog
