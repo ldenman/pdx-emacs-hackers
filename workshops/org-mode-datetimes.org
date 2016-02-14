@@ -1,0 +1,74 @@
+#+TITLE: 2016-02-17 Datetimes in Org-mode
+#+DATE: <2016-02-07 Sun>
+#+AUTHOR: William Clifford
+#+EMAIL: wobh@yahoo.com
+
+* Introduction
+* A few words about Properties
+
+We have to mention properties because almost everything about setting
+and using datetimes intersects with the Org-mode feature of "Properties".
+
+Properties provide a way for org to keep track of "metadata" about the
+entries in the outline. They're simple key-value pairs that may appear
+under the headline in a special properties block like so:
+
+** Example headline with property drawer
+   :PROPERTIES:
+   :example-property-key: example value
+   :another-property-key: another value
+   :END:
+
+In this example we see two properties of this headline. They were set
+with the =org-set-property= (~C-c C-x p~) command. The ~:PROPERTIES:~
+and ~:END:~ delimiters around them mark the beginning and ending of a
+"drawer" which allow you to hide or reveal them ~TAB~ as you would
+other headlines, but they are automatically expanded with the
+headline. 
+
+Related topics to explore another time include:
+
+- Customized and other drawer types (although we'll see one specialty drawer laters)
+- You can display them in Org column view (we'll be introduced to
+  agenda view later this session)
+- Properties inheritance by child headlines, 
+- Searching Properties
+- Properies can be setup with auto-complete and cycling values
+
+We're not going to talk about this much more, except to say that /all/
+the metadata about an Org-mode headline is considered a property. The
+features you know already, TODO state, tags, priority, are properties
+with special syntax. There's other special syntax properties and we're
+going to discuss them right away.
+
+* Timestamps 
+
+** Format
+
+There's two kinds of timestamp
+
+- <2016-02-07 Sun> :: an "active" timestamp ~C-c .~
+- [2016-02-07 Sun] :: an "inactive" timestamp ~C-c !~
+
+Active timestamps are included in the Agenda. To include a time in the
+timestamp use the argument ~C-u C-c .~ or ~C-u C-c !~
+
+* TODO Schedules and Deadlines
+* TODO Time Clock
+* References
+** Properties
+- [[info:org#Properties and columns]]
+- [[info:org#Property syntax]]
+** Timestamps
+- [[info:org#Timestamps]]
+** Schedules and Deadlines
+- [[info:org#Inserting deadline/schedule]]
+* COMMENT org settings
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 24.5.1 (Org mode 8.3.3)
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+OPTIONS: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
