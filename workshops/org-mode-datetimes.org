@@ -1,9 +1,14 @@
-#+TITLE: 2016-02-17 Datetimes in Org-mode
+#+TITLE: 2016-02-17 Org-mode GTD
 #+DATE: <2016-02-07 Sun>
 #+AUTHOR: William Clifford
 #+EMAIL: wobh@yahoo.com
+#+AUTHOR: Lake Denman
+#+EMAIL:
 
-* Introduction
+* TODO Introduction
+
+Topic for today is org agenda views, scheduling tasks, archiving and refiling, and time tracking.
+
 * A few words about Properties
 
 We have to mention properties because almost everything about setting
@@ -24,14 +29,14 @@ with the =org-set-property= (~C-c C-x p~) command. The ~:PROPERTIES:~
 and ~:END:~ delimiters around them mark the beginning and ending of a
 "drawer" which allow you to hide or reveal them ~TAB~ as you would
 other headlines, but they are automatically expanded with the
-headline. 
+headline.
 
 Related topics to explore another time include:
 
 - Customized and other drawer types (although we'll see one specialty drawer laters)
 - You can display them in Org column view (we'll be introduced to
   agenda view later this session)
-- Properties inheritance by child headlines, 
+- Properties inheritance by child headlines,
 - Searching Properties
 - Properies can be setup with auto-complete and cycling values
 
@@ -41,20 +46,76 @@ features you know already, TODO state, tags, priority, are properties
 with special syntax. There's other special syntax properties and we're
 going to discuss them right away.
 
-* Timestamps 
+* Timestamps
 
 ** Format
 
 There's two kinds of timestamp
 
-- <2016-02-07 Sun> :: an "active" timestamp ~C-c .~
-- [2016-02-07 Sun] :: an "inactive" timestamp ~C-c !~
+- <2016-02-17 Wed> :: an "active" timestamp ~C-c .~
+- [2016-02-17 Wed] :: an "inactive" timestamp ~C-c !~
 
 Active timestamps are included in the Agenda. To include a time in the
 timestamp use the argument ~C-u C-c .~ or ~C-u C-c !~
 
-* TODO Schedules and Deadlines
+- <2016-02-17 Wed 18:30>
+- [2016-02-17 Wed 18:30]
+
+* DONE Deadlines and Schedules
+
+- C-c C-d :: insert deadline
+- C-c C-s :: insert schedule
+- C-c C-t :: increment TODO state
+
+examples below:
+
+** DONE meet with Will to work on PDX-Emacs presentation
+   SCHEDULED: <2016-02-13 Sat 20:30>
+
+** TODO write date time and agenda presentations
+   DEADLINE: <2016-02-16 Tue>
+
+** Biweekly unrequired thing
+   SCHEDULED: <2016-01-01 Fri ++2w>
+
+** PDX-Emacs meetup as diary floating date
+   <%%(diary-float t 3 3)> 18:30 
+
+** TODO Monthly Scheduled Todo Thingy
+   SCHEDULED: <2016-04-13 Wed ++1m>
+   - State "DONE"       from "TODO"       [2016-02-13 Sat 22:40]
+   - State "DONE"       from "TODO"       [2016-02-13 Sat 22:35]
+   :PROPERTIES:
+   :LAST_REPEAT: [2016-02-13 Sat 22:40]
+   :END:
+
+#+BEGIN_QUOTE
+Marking this DONE will shift the date by at least one week,
+but also by as many weeks as it takes to get this date into
+the future.  However, it stays on a Sunday, even if you called
+and marked it done on Saturday.
+#+END_QUOTE
+
+** TODO repeated entry every some odd days
+   SCHEDULED: <2016-04-12 Tue +1m>
+   - State "DONE"       from "TODO"       [2016-02-13 Sat 22:40]
+   - State "DONE"       from "TODO"       [2016-02-13 Sat 22:37]
+   :PROPERTIES:
+   :LAST_REPEAT: [2016-02-13 Sat 22:40]
+   :END:
+   
+#+BEGIN_QUOTE
+Marking this DONE will shift the date to one month after
+today.
+#+END_QUOTE
+
+
+** Valentines Day
+   SCHEDULED: <2016-02-14 Sun ++y>
+
 * TODO Time Clock
+* TODO Agenda views
+* TODO Archive/refile
 * References
 ** Properties
 - [[info:org#Properties and columns]]
@@ -63,12 +124,21 @@ timestamp use the argument ~C-u C-c .~ or ~C-u C-c !~
 - [[info:org#Timestamps]]
 ** Schedules and Deadlines
 - [[info:org#Inserting deadline/schedule]]
-* COMMENT org settings
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 24.5.1 (Org mode 8.3.3)
-#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t c:nil creator:nil d:(not "LOGBOOK") date:t e:t
-#+OPTIONS: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t
-#+OPTIONS: tags:t tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+
+* COMMENT demo setup
+1. =emacs -q org-mode-datetimes.org=
+2. =C-c [=
+
+#+BEGIN_QUOTE
+`C-c [     (`org-agenda-file-to-front')' 
+     Add current file to the list of agenda files.  The file is added to
+     the front of the list.  If it was already in the list, it is moved
+     to the front.  With a prefix argument, file is added/moved to the
+     end.  
+#+END_QUOTE
+#+BEGIN_SRC elisp
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+#+END_SRC
+#+TODO: TODO | DONE

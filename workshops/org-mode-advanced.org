@@ -1,6 +1,25 @@
 * agenda                                                               :lake:
 ** basic intro
+
+
+
 ** reporting view
+
+*** navigation
+#+BEGIN_QUOTE
+Motion
+
+n     (org-agenda-next-line)
+    Next line (same as <down> and C-n).
+p     (org-agenda-previous-line)
+    Previous line (same as <up> and C-p).
+N     (org-agenda-next-item)
+    Next item: same as next line, but only consider items.
+P     (org-agenda-previous-item)
+    Previous item: same as previous line, but only consider items.
+View/Go to Org file
+#+END_QUOTE
+
 ** deadlines
 ** agenda as navigtation
 ** changing states of items
