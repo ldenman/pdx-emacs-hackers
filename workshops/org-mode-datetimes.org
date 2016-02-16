@@ -46,6 +46,13 @@ features you know already, TODO state, tags, priority, are properties
 with special syntax. There's other special syntax properties and we're
 going to discuss them right away.
 
+** Column view intro
+
+Intro here, circle back later
+
+- C-c C-x C-c :: Column view
+  - q :: exit column view
+
 * Timestamps
 
 ** Format
@@ -114,8 +121,66 @@ today.
    SCHEDULED: <2016-02-14 Sun ++y>
 
 * TODO Time Clock
+
+   Time clocks are useful for tracking time spent on tasks.
+
+   - C-c C-x C-i :: Clock into a task
+   - C-c C-x C-o :: Clock out of a task
+   - C-c C-x C-j :: Move point to current running clock
+   - C-c C-x C-q :: Cancel the current clock. This is useful if a
+                    clock was started by mistake, or if you ended up
+                    working on something else.
+   - C-c C-x C-j :: Jump to the headline of the currently clocked in
+                    task.  With a ~C-u~ prefix arg, select the target
+                    task from a list of recently clocked tasks.
+   - C-c C-x C-d :: Display time summaries for each subtree in the
+                    current buffer. Press ~C-c C-c~ or start typing to
+                    remove.
+
+   - C-c C-c :: Recalculate the resulting time 
+   - C-c C-t :: Changing the TODO state of an item to DONE
+                automatically stops the clock if it is running in this
+                same item.
+
+** Writing Time Clock Example
+   CLOCK: [2016-02-15 Mon 22:18]--[2016-02-16 Tue 22:30] => 24:12
+
+** TODO example todo item
+   CLOCK: [2016-02-15 Mon 22:48]--[2016-02-15 Mon 22:50] =>  0:02
+
+** Example of clocking in multiple times
+   CLOCK: [2016-02-15 Mon 22:35]--[2016-02-15 Mon 22:38] =>  0:03
+   CLOCK: [2016-02-15 Mon 22:30]--[2016-02-15 Mon 22:35] =>  0:05
+   CLOCK: [2016-02-15 Mon 22:20]--[2016-02-15 Mon 22:25] =>  0:05
+
+** Example clock table
+   CLOCK: [2016-02-15 Mon 22:35]--[2016-02-15 Mon 22:38] =>  0:03
+   CLOCK: [2016-02-15 Mon 22:30]--[2016-02-15 Mon 22:35] =>  0:05
+   CLOCK: [2016-02-15 Mon 22:20]--[2016-02-15 Mon 22:25] =>  0:05
+
+- C-c C-x C-r :: insert clock table (careful not to run twice) 
+- C-c C-x C-u :: update clock table 
+
+** Effort estimate
+   :PROPERTIES:
+   :Effort:   5
+   :COLUMNS: %40ITEM(Task) %17Effort(Estimated Effort){:} %CLOCKSUM
+   :END:
+
+File settings for efforts 
+
+#+PROPERTY: Effort_ALL 1 2 3 5 8 13
+
+- C-c C-x e :: set effort
+
 * TODO Agenda views
+
+- C-ca :: agenda menu
+  - a :: agenda for week or day
+  - L :: timeline
+    - l :: log mode toggle - shows clocks for day
 * TODO Archive/refile
+* TODO Putting it all together: sprint plan
 * References
 ** Properties
 - [[info:org#Properties and columns]]
@@ -136,9 +201,14 @@ today.
      to the front.  With a prefix argument, file is added/moved to the
      end.  
 #+END_QUOTE
+
 #+BEGIN_SRC elisp
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 #+END_SRC
+
+#+RESULTS:
+: org-iswitchb
+
 #+TODO: TODO | DONE
